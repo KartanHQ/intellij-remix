@@ -10,6 +10,7 @@
     <depends>JavaScript</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-
+        <fileType name="JavaScript" language="JavaScript" fileNames="remix.config.js"/>
+        <iconProvider implementation="com.nekofar.milad.intellij.remix.config.RemixConfigIconProvider"/>
     </extensions>
 </idea-plugin>
