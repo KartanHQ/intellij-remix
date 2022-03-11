@@ -1,19 +1,21 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
-<idea-plugin>
-    <id>com.nekofar.milad.intellij-remix</id>
-    <name>Intellij-remix</name>
-    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
-
-    <description><![CDATA[
-    Enter short description for your plugin here.<br>
-    <em>most HTML tags may be used</em>
-  ]]></description>
+<idea-plugin url="https://github.com/nekofar/intellij-remix">
+    <id>com.nekofar.milad.intellij.remix</id>
+    <name>Remix</name>
+    <vendor email="milad@nekofar.com" url="https://github.com/nekofar">Milad Nekofar</vendor>
 
     <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
          on how to target different products -->
     <depends>com.intellij.modules.platform</depends>
+    <depends>JavaScript</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-
+        <fileType name="JavaScript" language="JavaScript" fileNames="remix.config.js"/>
+        <iconProvider implementation="com.nekofar.milad.intellij.remix.config.RemixConfigIconProvider"/>
+        <!-- works in WebStorm and other SmallIDEs -->
+        <directoryProjectGenerator implementation="com.nekofar.milad.intellij.remix.cli.RemixCliProjectGenerator" />
+        <projectTemplatesFactory implementation="com.nekofar.milad.intellij.remix.cli.RemixProjectTemplateFactory"/>
+        <!-- works in new IDEA wizard -->
+        <moduleBuilder builderClass="com.nekofar.milad.intellij.remix.cli.RemixCliProjectModuleBuilder" />
     </extensions>
 </idea-plugin>
