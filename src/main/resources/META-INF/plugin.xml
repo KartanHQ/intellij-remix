@@ -1,5 +1,5 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
-<idea-plugin url="https://github.com/nekofar/intellij-remix">
+<idea-plugin>
     <id>com.nekofar.milad.intellij.remix</id>
     <name>Remix</name>
     <vendor email="hello@kartan.net" url="https://kartan.net">Kartan</vendor>
