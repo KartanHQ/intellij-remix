@@ -2,7 +2,7 @@
 <idea-plugin url="https://github.com/nekofar/intellij-remix">
     <id>com.nekofar.milad.intellij.remix</id>
     <name>Remix</name>
-    <vendor email="milad@nekofar.com" url="https://github.com/nekofar">Milad Nekofar</vendor>
+    <vendor email="hello@kartan.net" url="https://kartan.net">Kartan</vendor>
 
     <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
          on how to target different products -->
