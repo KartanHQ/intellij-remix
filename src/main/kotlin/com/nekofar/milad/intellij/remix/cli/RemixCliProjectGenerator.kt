@@ -8,43 +8,26 @@ import com.intellij.openapi.roots.ContentEntry
 import com.intellij.openapi.vfs.VirtualFile
 import com.nekofar.milad.intellij.remix.RemixBundle
 import com.nekofar.milad.intellij.remix.RemixIcons
-import javax.swing.Icon
 
 class RemixCliProjectGenerator: NpmPackageProjectGenerator() {
     private val packageName = "create-remix"
     private val executable = "create-remix"
 
-    override fun getName(): String {
-        return RemixBundle.message("remix.project.generator.name")
-    }
+    override fun getIcon() = RemixIcons.ProjectGenerator
 
-    override fun getDescription(): String {
-        return RemixBundle.message("remix.project.generator.description")
-    }
+    override fun getName() = RemixBundle.message("remix.project.generator.name")
 
-    override fun filters(project: Project, baseDir: VirtualFile): Array<Filter> {
-        return emptyArray()
-    }
+    override fun getDescription() = RemixBundle.message("remix.project.generator.description")
 
-    override fun customizeModule(p0: VirtualFile, p1: ContentEntry?) {}
+    override fun filters(project: Project, baseDir: VirtualFile): Array<Filter> = emptyArray()
 
-    override fun packageName(): String {
-        return packageName
-    }
+    override fun customizeModule(baseDir: VirtualFile, entry: ContentEntry?) { /* Do nothing */ }
 
-    override fun presentablePackageName(): String {
-        return RemixBundle.message("remix.project.generator.presentable.package.name")
-    }
+    override fun packageName() = packageName
 
-    override fun getNpxCommands(): List<NpxPackageDescriptor.NpxCommand> {
-        return listOf(NpxPackageDescriptor.NpxCommand(packageName, executable))
-    }
+    override fun presentablePackageName() = RemixBundle.message("remix.project.generator.presentable.package.name")
 
-    override fun generatorArgs(project: Project?, dir: VirtualFile?, settings: Settings?): Array<String> {
-        return arrayOf(".")
-    }
+    override fun getNpxCommands() = listOf(NpxPackageDescriptor.NpxCommand(packageName, executable))
 
-    override fun getIcon(): Icon {
-        return RemixIcons.ProjectGenerator
-    }
+    override fun generatorArgs(project: Project?, dir: VirtualFile?, settings: Settings?) = arrayOf(".")
 }
