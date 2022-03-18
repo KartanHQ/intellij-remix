@@ -9,7 +9,7 @@
 <!-- Plugin description -->
 Provides boilerplate codes for easier project creation using [Remix](https://remix.run) CLI.
 
-Speed up the setup phase of development for both new and experienced developers.
+Speed up the setup phase of application development for both new and experienced developers.
 <!-- Plugin description end -->
 
 ## Installation
