@@ -12,14 +12,14 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: ubuntu-latest
-            runIde: |
-              export DISPLAY=:99.0
-              Xvfb -ac :99 -screen 0 1920x1080x16 &
-              mkdir -p build/reports
-              gradle runIdeForUiTests > build/reports/idea.log &
-          - os: windows-latest
-            runIde: start gradlew.bat runIdeForUiTests
+#          - os: ubuntu-latest
+#            runIde: |
+#              export DISPLAY=:99.0
+#              Xvfb -ac :99 -screen 0 1920x1080x16 &
+#              mkdir -p build/reports
+#              gradle runIdeForUiTests > build/reports/idea.log &
+#          - os: windows-latest
+#            runIde: start gradlew.bat runIdeForUiTests
           - os: macos-latest
             runIde: |
               mkdir -p build/reports
@@ -29,11 +29,11 @@ jobs:
 
       # Check out current repository
       - name: Fetch Sources
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3.0.0
 
       # Setup Java 11 environment for the next steps
       - name: Setup Java
-        uses: actions/setup-java@v2.5.0
+        uses: actions/setup-java@v3.1.0
         with:
           distribution: zulu
           java-version: 11
