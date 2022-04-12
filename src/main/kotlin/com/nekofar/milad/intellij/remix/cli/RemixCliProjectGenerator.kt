@@ -21,7 +21,8 @@ class RemixCliProjectGenerator: NpmPackageProjectGenerator() {
 
     override fun filters(project: Project, baseDir: VirtualFile): Array<Filter> = emptyArray()
 
-    override fun customizeModule(baseDir: VirtualFile, entry: ContentEntry?) { /* Do nothing */ }
+    override fun customizeModule(baseDir: VirtualFile, entry: ContentEntry?) { /* Do nothing */
+    }
 
     override fun packageName() = packageName
 
@@ -29,5 +30,8 @@ class RemixCliProjectGenerator: NpmPackageProjectGenerator() {
 
     override fun getNpxCommands() = listOf(NpxPackageDescriptor.NpxCommand(packageName, executable))
 
-    override fun generatorArgs(project: Project?, dir: VirtualFile?, settings: Settings?) = arrayOf(".")
+    override fun generatorArgs(project: Project?, dir: VirtualFile?, settings: Settings?) =
+        project?.let { arrayOf(it.name) }
+
+    override fun generateInTemp() = true
 }
