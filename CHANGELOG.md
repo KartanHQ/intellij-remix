@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+## [1.0.0] - 2022-04-12
+
+### Bug Fixes
+
+- Solve project generation issue on version `221.*`
+
 ## [1.0.0] - 2022-03-16
 
 ### Features
