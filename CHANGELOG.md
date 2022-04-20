@@ -2,11 +2,15 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
-## [1.1.0-alpha.1] - 2022-04-12
+## [1.1.0-alpha.2] - 2022-04-20
 
 ### Bug Fixes
 
 - Solve project generation issue on version `221.*`
+
+### Features
+
+- Implement error handle and report through github issues
 
 ## [1.0.0] - 2022-03-16
 
