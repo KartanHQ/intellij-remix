@@ -17,5 +17,7 @@
         <projectTemplatesFactory implementation="com.nekofar.milad.intellij.remix.cli.RemixProjectTemplateFactory"/>
         <!-- works in new IDEA wizard -->
         <moduleBuilder builderClass="com.nekofar.milad.intellij.remix.cli.RemixCliProjectModuleBuilder" />
+
+        <errorHandler implementation="com.nekofar.milad.intellij.remix.diagnostic.RemixErrorReportSubmitter"/>
     </extensions>
 </idea-plugin>
