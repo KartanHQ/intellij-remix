@@ -1,8 +1,8 @@
 # Changelog
+
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
-## [1.1.0-alpha.2] - 2022-04-20
 
 ### Bug Fixes
 
