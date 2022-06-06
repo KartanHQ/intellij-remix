@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
-## [1.1.0-alpha.4] - 2022-05-24
+## [1.1.0-alpha.5] - 2022-06-06
 
 ### Bug Fixes
 
