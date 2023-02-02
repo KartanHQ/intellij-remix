@@ -1,3 +1,4 @@
+import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
 
 fun properties(key: String) = project.findProperty(key).toString()
@@ -48,6 +49,21 @@ intellij {
     plugins.set(properties("platformPlugins").split(',').map(String::trim).filter(String::isNotEmpty))
 }
 
+// Configure Gradle Changelog Plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
+changelog {
+    version.set(properties("pluginVersion"))
+    groups.set(emptyList())
+    repositoryUrl.set(properties("pluginRepositoryUrl"))
+}
+
+// Configure Gradle Qodana Plugin - read more: https://github.com/JetBrains/gradle-qodana-plugin
+qodana {
+    cachePath.set(file(".qodana").canonicalPath)
+    reportPath.set(file("build/reports/inspections").canonicalPath)
+    saveReport.set(true)
+    showReport.set(System.getenv("QODANA_SHOW_REPORT")?.toBoolean() ?: false)
+}
+
 tasks {
     wrapper {
         gradleVersion = properties("gradleVersion")
@@ -70,6 +86,17 @@ tasks {
                 subList(indexOf(start) + 1, indexOf(end))
             }.joinToString("\n").let { markdownToHTML(it) }
         )
+
+        // Get the latest available change notes from the changelog file
+        changeNotes.set(provider {
+            with(changelog) {
+                renderItem(
+                    getOrNull(properties("pluginVersion"))
+                        ?: runCatching { getLatest() }.getOrElse { getUnreleased() },
+                    Changelog.OutputType.HTML,
+                )
+            }
+        })
     }
 
     // Configure UI tests plugin
@@ -94,7 +121,7 @@ tasks {
     publishPlugin {
         dependsOn("patchChangelog")
         token.set(System.getenv("PUBLISH_TOKEN"))
-        // pluginVersion is based on the SemVer (https://semver.org) and supports pre-release labels, like 2.1.7-alpha.3
+        // The pluginVersion is based on the SemVer (https://semver.org) and supports pre-release labels, like 2.1.7-alpha.3
         // Specify pre-release label to publish the plugin in a custom Release Channel automatically. Read more:
         // https://plugins.jetbrains.com/docs/intellij/deployment.html#specifying-a-release-channel
         channels.set(listOf(properties("pluginVersion").split('-').getOrElse(1) { "default" }.split('.').first()))
