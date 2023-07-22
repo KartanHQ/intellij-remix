@@ -16,7 +16,7 @@ poised to win over user appreciation.
 The supplied plugin equips you with foundational codes, simplifying the initiation of new projects via Command Line
 Interface (CLI).
 
-This facilitates a swift setup phase for application development, benefitting both novice and professional developers.
+This facilitates a swift setup phase for application development, benefiting both novice and professional developers.
 <!-- Plugin description end -->
 
 ## Installation
