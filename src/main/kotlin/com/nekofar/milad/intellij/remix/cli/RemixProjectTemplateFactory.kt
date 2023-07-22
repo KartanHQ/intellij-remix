@@ -5,5 +5,7 @@ import com.intellij.lang.javascript.boilerplate.JavaScriptNewTemplatesFactoryBas
 import com.intellij.platform.ProjectTemplate
 
 class RemixProjectTemplateFactory : JavaScriptNewTemplatesFactoryBase() {
-    override fun createTemplates(context: WizardContext?): Array<ProjectTemplate> = arrayOf(RemixCliProjectGenerator())
+    override fun createTemplates(context: WizardContext?): Array<ProjectTemplate> = arrayOf(
+        RemixCliProjectGenerator()
+    )
 }
