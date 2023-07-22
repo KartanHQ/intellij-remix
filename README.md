@@ -9,12 +9,18 @@
 
 
 <!-- Plugin description -->
-Provides boilerplate codes for easier project creation using [Remix](https://remix.run) CLI.
+[Remix](https://remix.run) serves as a robust full-stack web framework, enabling increased concentration on user
+interface generation while utilizing web standards to craft fast, smooth and resilient user experiences. Your work is
+poised to win over user appreciation.
 
-Speed up the setup phase of application development for both new and experienced developers.
+The supplied plugin equips you with foundational codes, simplifying the initiation of new projects via Command Line
+Interface (CLI).
+
+This facilitates a swift setup phase for application development, benefitting both novice and professional developers.
 <!-- Plugin description end -->
 
 ## Installation
 
-For plugin installation, navigate to `Preferences`, then `Plugins`, and finally `Marketplace`. In the search bar, enter `Remix`.
+For plugin installation, navigate to `Preferences`, then `Plugins`, and finally `Marketplace`. In the search bar,
+enter `Remix`.
 
