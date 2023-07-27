@@ -49,18 +49,18 @@ jobs:
 
       # Validate wrapper
       - name: Gradle Wrapper Validation
-        uses: gradle/wrapper-validation-action@v1.0.6
+        uses: gradle/wrapper-validation-action@v1.1.0
 
       # Setup Java environment for the next steps
       - name: Setup Java
-        uses: actions/setup-java@v3.11.0
+        uses: actions/setup-java@v3.12.0
         with:
           distribution: zulu
           java-version: 17
 
       # Setup Gradle
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2.6.1
+        uses: gradle/gradle-build-action@v2.7.0
 
       # Set environment variables
       - name: Export Properties
@@ -127,14 +127,14 @@ jobs:
 
       # Setup Java environment for the next steps
       - name: Setup Java
-        uses: actions/setup-java@v3.11.0
+        uses: actions/setup-java@v3.12.0
         with:
           distribution: zulu
           java-version: 17
 
       # Setup Gradle
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2.6.1
+        uses: gradle/gradle-build-action@v2.7.0
 
       # Run tests
       - name: Run Tests
@@ -171,7 +171,7 @@ jobs:
 
       # Setup Java environment for the next steps
       - name: Setup Java
-        uses: actions/setup-java@v3.11.0
+        uses: actions/setup-java@v3.12.0
         with:
           distribution: zulu
           java-version: 17
@@ -200,14 +200,14 @@ jobs:
 
       # Setup Java environment for the next steps
       - name: Setup Java
-        uses: actions/setup-java@v3.11.0
+        uses: actions/setup-java@v3.12.0
         with:
           distribution: zulu
           java-version: 17
 
       # Setup Gradle
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2.6.1
+        uses: gradle/gradle-build-action@v2.7.0
 
       # Cache Plugin Verifier IDEs
       - name: Setup Plugin Verifier IDEs Cache
@@ -245,7 +245,7 @@ jobs:
 
       # Setup Java environment for the next steps
       - name: Setup Java
-        uses: actions/setup-java@v3.11.0
+        uses: actions/setup-java@v3.12.0
         with:
           distribution: zulu
           java-version: 17
@@ -261,16 +261,13 @@ jobs:
 
       # Create a new release draft which is not publicly visible and requires manual acceptance
       - name: Create Release Draft
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh release create v${{ needs.build.outputs.version }} \
-            --draft \
-            --title "v${{ needs.build.outputs.version }}" \
-            --notes "$(cat << 'EOM'
-          ${{ needs.build.outputs.changelog }}
-          EOM
-          )"
+        uses: nekofar/create-github-release@v1.0.8
+        with:
+          tag: v${{ needs.build.outputs.version }} # The name of the tag to be released
+          title: v${{ needs.build.outputs.version }} # The title for the release
+          notes: ${{ needs.build.outputs.changelog }} # The release notes generated in the previous step
+          draft: true # The release will be created as a draft
+          prerelease: ${{ contains(needs.build.outputs.version, '-rc') || contains(needs.build.outputs.version, '-beta') || contains(needs.build.outputs.version, '-alpha') }} # Conditions to mark the release as a pre-release
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
