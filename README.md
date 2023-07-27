@@ -21,6 +21,5 @@ This facilitates a swift setup phase for application development, benefiting bot
 
 ## Installation
 
-For plugin installation, navigate to `Preferences`, then `Plugins`, and finally `Marketplace`. In the search bar,
-enter `Remix`.
+For plugin installation, navigate to `Preferences`, then `Plugins`, and finally `Marketplace`. In the search bar, enter `Remix`.
 
