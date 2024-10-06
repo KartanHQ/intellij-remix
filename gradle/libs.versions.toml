@@ -14,7 +14,7 @@ junit = { group = "junit", name = "junit", version.ref = "junit" }
 
 [plugins]
 changelog = { id = "org.jetbrains.changelog", version.ref = "changelog" }
-gradleIntelliJPlugin = { id = "org.jetbrains.intellij", version.ref = "gradleIntelliJPlugin" }
+intelliJPlatform = { id = "org.jetbrains.intellij.platform", version.ref = "intelliJPlatform" }
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 qodana = { id = "org.jetbrains.qodana", version.ref = "qodana" }
