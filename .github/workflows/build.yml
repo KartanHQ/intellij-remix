@@ -61,9 +61,9 @@ jobs:
 
       # Validate wrapper
       - name: Gradle Wrapper Validation
-        uses: gradle/wrapper-validation-action@v3.5.0
+        uses: gradle/actions/wrapper-validation@v4.1.0
 
-      # Setup Java environment for the next steps
+      # Set up Java environment for the next steps
       - name: Setup Java
         uses: actions/setup-java@v4.4.0
         with:
@@ -86,8 +86,6 @@ jobs:
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "name=$NAME" >> $GITHUB_OUTPUT
           echo "pluginVerifierHomeDir=~/.pluginVerifier" >> $GITHUB_OUTPUT
-          
-          ./gradlew listProductsReleases # prepare list of IDEs for Plugin Verifier
 
       # Extract changelog information
       - name: Prepare Changelog
@@ -207,7 +205,7 @@ jobs:
   # Run plugin structure verification along with IntelliJ Plugin Verifier
   verify:
     name: Verify plugin
-    needs: [ build, test, inspectCode ]
+    needs: [ build ]
     runs-on: ubuntu-latest
     steps:
 
@@ -242,7 +240,7 @@ jobs:
 
       # Run Verify Plugin task and IntelliJ Plugin Verifier tool
       - name: Run Plugin Verification tasks
-        run: ./gradlew runPluginVerifier -Dplugin.verifier.home.dir=${{ needs.build.outputs.pluginVerifierHomeDir }}
+        run: ./gradlew verifyPlugin -Dplugin.verifier.home.dir=${{ needs.build.outputs.pluginVerifierHomeDir }}
 
       # Collect Plugin Verifier Result
       - name: Collect Plugin Verifier Result
@@ -257,7 +255,7 @@ jobs:
   releaseDraft:
     name: Release draft
     if: github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/heads/support/')
-    needs: [ build, verify ]
+    needs: [ build, test, inspectCode, verify ]
     runs-on: ubuntu-latest
     permissions:
       contents: write
