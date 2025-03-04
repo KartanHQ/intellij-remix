@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+## [1.2.5] - 2025-03-04
+
+### Bug Fixes
+
+- Solve some minor issues and update dependencies
+
 ## [1.2.4] - 2025-01-15
 
 ### Bug Fixes
